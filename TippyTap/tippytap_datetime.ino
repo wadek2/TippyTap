@@ -19,7 +19,7 @@ void dateTimeSetup(){
 
   
 
-  setTodaysDate();
+//  setTodaysDate();
 }
 
 void dailyAlarm(){
@@ -36,20 +36,20 @@ void dailyAlarm(){
   }
 }
 
-// gives a const char* value to the variable todaysDate in tippytap_setup
-void setTodaysDate(){
-  tmElements_t tm;
-  RTC.read(tm);
-    // change todays date from an integer to a string
-  //String str1 = String(tm.Day+'_'+tm.Month+'_'+tm.Year);     // for the study
-  String str1 = String(tm.Minute);    // for testing
-  // change todays date from a string to a constant character
-  const char* string1 = str1.c_str();
-  
-  // Set today's Date
-  todaysDate = string1; 
-  Serial.println("updatetodaysDate");
-  Serial.println(todaysDate);
-  //mkdateFolder(todaysDate);
-}
+//// gives a const char* value to the variable todaysDate in tippytap_setup
+//void setTodaysDate(){
+//  tmElements_t tm;
+//  RTC.read(tm);
+//    // change todays date from an integer to a string
+//  //String str1 = String(tm.Day+'_'+tm.Month+'_'+tm.Year);     // for the study
+//  String str1 = String(tm.Minute);    // for testing
+//  // change todays date from a string to a constant character
+//  const char* string1 = str1.c_str();
+//  
+//  // Set today's Date
+//  todaysDate = string1; 
+//  Serial.println("updatetodaysDate");
+//  Serial.println(todaysDate);
+//  //mkdateFolder(todaysDate);
+//}
 

@@ -48,8 +48,7 @@ SdFile file;
 Adafruit_MMA8451 mma = Adafruit_MMA8451();
 
 // constant character for todays date
-const char* todaysDate = "a";
-
+//const char* todaysDate = "a";
 
 //-----------------------------------------------------------------------------------------------------------------------
 

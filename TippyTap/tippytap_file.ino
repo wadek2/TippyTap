@@ -6,8 +6,16 @@ void fileSetup(){
 }
 
 void createFile() {
+  tmElements_t tm;
+  RTC.read(tm);
+    // change todays date from an integer to a string
+  //String str1 = String(tm.Day+'_'+tm.Month+'_'+tm.Year);     // for the study
+  String str1 = String(tm.Minute);    // for testing
+  // change todays date from a string to a constant character
+  const char* todaysDate = str1.c_str();
   while (sd.exists(todaysDate)) {  //call file name todaysDate
-    if (!todaysDate) {   // if it doesn't exist make it
+    if (!todaysDate) { 
+      todaysDate;// if it doesn't exist make it
     } else {
       error("Can't create file name");
     }
@@ -15,6 +23,13 @@ void createFile() {
 }
 
 void openFile (){  
+  tmElements_t tm;
+  RTC.read(tm);
+    // change todays date from an integer to a string
+  //String str1 = String(tm.Day+'_'+tm.Month+'_'+tm.Year);     // for the study
+  String str1 = String(tm.Minute);    // for testing
+  // change todays date from a string to a constant character
+  const char* todaysDate = str1.c_str();
   if (!file.open(todaysDate, O_CREAT | O_WRITE | O_EXCL)) {     //if todays date doesn't open send an error
     error("file.open");
   }

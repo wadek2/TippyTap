@@ -9,18 +9,36 @@ void directoriesSetup(){
   }
   cout << F("Created Data\n");
   chdirRoot();   //Go into the Data Directory
-  mkdateFolder(todaysDate); // Make a folder based on today's date
+  mkdateFolder(); // Make a folder based on today's date
   //setTodaysDate();
   
 }
 
-void mkdateFolder(const char* x){
-  if (!sd.mkdir(x)) {
+void mkdateFolder(){
+  tmElements_t tm;
+  RTC.read(tm);
+    // change todays date from an integer to a string
+  //String str1 = String(tm.Day+'_'+tm.Month+'_'+tm.Year);     // for the study
+  String str1 = String(tm.Minute);    // for testing
+  // change todays date from a string to a constant character
+  const char* todaysDate = str1.c_str();
+  
+  if (!sd.mkdir(todaysDate)) {
     error("Creating today's date folder failed");
   }
   cout << F("Created todays date folder success!!");
    
 }
+
+//void mkdateFolder(){
+//  tmElements_t tm;
+//  RTC.read(tm);
+//  if (!sd.mkdir_util(tm.Minute)) {
+//    error("Creating today's date folder failed");
+//  }
+//  cout << F("Created todays date folder success!!");
+//   
+//}
 
 void chdirFolder(const char* x){
     if (!sd.chdir(x)) {
