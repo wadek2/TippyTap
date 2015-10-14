@@ -23,6 +23,7 @@ ArduinoInStream cin(Serial, cinBuf, sizeof(cinBuf));
 
 // Error messages stored in flash.
 #define error(msg) sd.errorHalt(F(msg))
+ 
 
 // Interval between data records in milliseconds.
 // The interval must be greater than the maximum SD write latency plus the
@@ -50,6 +51,10 @@ Adafruit_MMA8451 mma = Adafruit_MMA8451();
 // constant character for todays date
 //const char* todaysDate = "a";
 
+// Time in micros for next data record.
+uint32_t logTime;
+
+
 //-----------------------------------------------------------------------------------------------------------------------
 
 void setup() {
@@ -62,8 +67,8 @@ void setup() {
   initializeSDSetup ();
   dateTimeSetup();
   directoriesSetup();
-  fileSetup();
   accelerometerSetup();
+  fileSetup();
   controllerSetup();
 }
 

@@ -10,6 +10,7 @@ void directoriesSetup(){
   cout << F("Created Data\n");
   chdirRoot();   //Go into the Data Directory
   mkdateFolder(); // Make a folder based on today's date
+  chdirFolder();
   //setTodaysDate();
   
 }
@@ -19,11 +20,11 @@ void mkdateFolder(){
   RTC.read(tm);
     // change todays date from an integer to a string
   //String str1 = String(tm.Day+'_'+tm.Month+'_'+tm.Year);     // for the study
-  String str1 = String(tm.Minute);    // for testing
+  String str1 = String(tm.Hour);    // for testing
   // change todays date from a string to a constant character
-  const char* todaysDate = str1.c_str();
+  const char* folderName = str1.c_str();
   
-  if (!sd.mkdir(todaysDate)) {
+  if (!sd.mkdir(folderName)) {
     error("Creating today's date folder failed");
   }
   cout << F("Created todays date folder success!!");
@@ -40,8 +41,15 @@ void mkdateFolder(){
 //   
 //}
 
-void chdirFolder(const char* x){
-    if (!sd.chdir(x)) {
+void chdirFolder(){
+  tmElements_t tm;
+  RTC.read(tm);
+    // change todays date from an integer to a string
+  //String str1 = String(tm.Day+'_'+tm.Month+'_'+tm.Year);     // for the study
+  String str1 = String(tm.Hour);    // for testing
+  // change todays date from a string to a constant character
+  const char* folderName = str1.c_str();
+    if (!sd.chdir(folderName)) {
     error("chdir failed for todaysDate.\n");
   }
   cout << F("chdir to todaysDate\n");   
