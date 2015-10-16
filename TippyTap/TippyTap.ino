@@ -55,6 +55,10 @@ Adafruit_MMA8451 mma = Adafruit_MMA8451();
 uint32_t logTime;
 
 
+//
+
+
+
 //-----------------------------------------------------------------------------------------------------------------------
 
 void setup() {
@@ -65,11 +69,11 @@ void setup() {
 
 
   initializeSDSetup ();
-  dateTimeSetup();
-  directoriesSetup();
-  accelerometerSetup();
+  //dateTimeSetup();
+  //directoriesSetup();
+  //accelerometerSetup();
   fileSetup();
-  controllerSetup();
+  //controllerSetup();
 }
 
 

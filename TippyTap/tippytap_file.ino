@@ -1,9 +1,11 @@
+# define DEFINTETEST "Wade.csv"
+
 void fileSetup(){
  //createFile();
  openFile();
  writeHeader();
- logTime = micros()/(1000UL*SAMPLE_INTERVAL_MS) + 1;
- logTime *= 1000UL*SAMPLE_INTERVAL_MS;
+// logTime = micros()/(1000UL*SAMPLE_INTERVAL_MS) + 1;
+// logTime *= 1000UL*SAMPLE_INTERVAL_MS;
 }
 
 //void createFile() {
@@ -39,15 +41,19 @@ void openFile (){
   String str3 = String (str1 + str2);
   // change todays date from a string to a constant character
   const char* fileName = str3.c_str();
-  if (!file.open(fileName, FILE_WRITE)) {     //if todays date doesn't open send an error
+  if (!file.open(DEFINTETEST, O_CREAT | O_WRITE | O_EXCL)) {     //if todays date doesn't open send an error
     error("file.open");
   }
   do {
     delay(10);
   } while (Serial.read() >= 0);
+  
   Serial.print(F("Logging to: "));
-  Serial.println(fileName);
+  Serial.println(DEFINTETEST);
   Serial.println(F("Type any character to stop"));
+
+ logTime = micros()/(1000UL*SAMPLE_INTERVAL_MS) + 1;
+ logTime *= 1000UL*SAMPLE_INTERVAL_MS;
 
   //writeHeader(); 
   
